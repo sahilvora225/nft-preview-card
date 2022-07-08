@@ -24,15 +24,48 @@ body {
   width: 80vw;
   max-width: 32rem;
   box-shadow: 0rem 1rem 5rem #0d192b; }
-  .nft-card__image {
+  .nft-card__img-holder {
     width: 100%;
-    border-radius: .7rem;
-    margin-bottom: 1.9rem; }
+    margin-bottom: 1.9rem;
+    overflow: hidden;
+    position: relative; }
+    .nft-card__img-holder__image {
+      height: 100%;
+      width: 100%;
+      border-radius: 0.7rem; }
+    .nft-card__img-holder__view {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: all 0.3s ease-in-out; }
+    .nft-card__img-holder::after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      border-radius: 0.7rem;
+      background-color: #00fff7;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0;
+      transition: all 0.4s ease-in-out; }
+    .nft-card__img-holder:hover::after {
+      opacity: 0.5; }
+    .nft-card__img-holder:hover .nft-card__img-holder__view {
+      transform: translate(-50%, -50%) scale(1);
+      cursor: pointer; }
   .nft-card__title {
     font-size: 2.1rem;
     font-weight: 600;
     color: white;
-    margin-bottom: 1.6rem; }
+    margin-bottom: 1.6rem;
+    transition: all 0.4s ease-in-out; }
+    .nft-card__title:hover {
+      color: #00fff7;
+      cursor: pointer; }
   .nft-card__description {
     font-size: 1.6rem;
     font-weight: 300;
@@ -75,7 +108,11 @@ body {
       font-size: 1.6rem; }
       .nft-card__footer__creator .highlight {
         color: white;
-        font-weight: 600; }
+        font-weight: 600;
+        transition: all 0.4s ease-in-out; }
+        .nft-card__footer__creator .highlight:hover {
+          color: #00fff7;
+          cursor: pointer; }
 
 .attribution {
   position: fixed;
